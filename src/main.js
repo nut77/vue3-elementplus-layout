@@ -1,4 +1,6 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
 
-createApp(App).mount('#app')
+console.log(import.meta.env.MODE);
+console.log(import.meta.env.VITE_AXIOS_BASE_URL);
+createApp(App).mount("#app");
