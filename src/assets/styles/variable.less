@@ -1,0 +1,606 @@
+// 公用less 变量、模块
+@background-color-base: #10101d;
+@background-color-lighter: #1e1f2b;
+@background-color-darker: #0b0b0c;
+@background-color-light: #121220;
+@background-color-expand: #040921;
+@background-color-base-opacity: rgba(16, 16, 29, .8);
+
+@color-black: #1A1A2E;
+@color-black-lighter: #262e54;
+
+@color-text-primary: #fbfbfb;
+@color-text-regular: #c9d2ff;
+@color-text-placeholder: #7E84A3;
+
+@color-primary: #41b2ff;
+@color-success: #06AE1C;
+@color-warning: #FF8800;
+@color-danger: #EC2F4F;
+@color-info: #7E84A3;
+
+.mixinTextColor(@color) {
+  color: @color !important;
+}
+
+.mixinStatusBox(@bgColor) {
+  display: inline-block;
+  background-color: @bgColor !important;
+  color:white !important;
+}
+
+[data-status-text="info"] {
+  .mixinTextColor(@color-info);
+}
+[data-status-text="primary"] {
+  .mixinTextColor(@color-primary);
+}
+[data-status-text="warning"] {
+  .mixinTextColor(@color-warning);
+}
+[data-status-text="danger"] {
+  .mixinTextColor(@color-danger);
+}
+[data-status-text="success"] {
+  .mixinTextColor(@color-success);
+}
+
+[data-status-box="准备开始"] {
+  .mixinStatusBox(@color-info);
+}
+[data-status-box="已创建"] {
+  .mixinStatusBox(@color-primary);
+}
+[data-status-box="分析中"] {
+  .mixinStatusBox(@color-warning);
+}
+[data-status-box="分析中止"] {
+  .mixinStatusBox(@color-danger);
+}
+[data-status-box="分析异常"] {
+  .mixinStatusBox(@color-danger);
+}
+[data-status-box="分析完成"] {
+  .mixinStatusBox(@color-success);
+}
+
+.mixinWidth(@width) {
+  width: ~'@{width}px' !important;
+}
+
+.mixinHeight(@height) {
+  height: ~'@{height}px';
+}
+
+.mixinFontSize(@size) {
+  font-size: ~'@{size}px';
+}
+.ofa {
+  overflow: auto;
+}
+
+.ofh {
+  overflow: hidden;
+}
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.blur {
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -ms-filter: blur(2px);
+  -o-filter: blur(2px);
+  filter: blur(2px);
+}
+
+.pr {
+  position: relative;
+}
+
+.tc {
+  text-align: center !important;
+}
+
+.tj {
+  text-align: justify;
+  text-align-last: justify;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.fwb {
+  font-weight: bold;
+}
+
+.fs16 {
+  .mixinFontSize(16);
+}
+
+.fs15 {
+  .mixinFontSize(15);
+}
+
+.fs14 {
+  .mixinFontSize(14);
+}
+
+.fs13 {
+  .mixinFontSize(13);
+}
+
+.fs12 {
+  .mixinFontSize(12);
+}
+
+.br {
+  word-break: break-all;
+  .el-form-item__content,
+  .el-form-item__label {
+    line-height: 25px !important;
+  }
+}
+
+.mg0 {
+  margin: 0;
+}
+
+.mg10 {
+  margin: 10px;
+}
+
+.mg20 {
+  margin: 20px;
+}
+
+.mg30 {
+  margin: 30px;
+}
+
+.mg40 {
+  margin: 40px;
+}
+
+.mgt0 {
+  margin-top: 0 !important;
+}
+
+.mgt5 {
+  margin-top: 5px !important;
+}
+
+.mgt10 {
+  margin-top: 10px;
+}
+
+.mgt20 {
+  margin-top: 20px;
+}
+
+.mgt30 {
+  margin-top: 30px;
+}
+
+.mgt40 {
+  margin-top: 40px;
+}
+
+.mgt50 {
+  margin-top: 50px !important;
+}
+
+.mgr5 {
+  margin-right: 5px;
+}
+
+.mgr10 {
+  margin-right: 10px;
+}
+
+.mgr15 {
+  margin-right: 15px;
+}
+
+.mgr20 {
+  margin-right: 20px;
+}
+
+.mgr30 {
+  margin-right: 30px !important;
+}
+
+.mgr40 {
+  margin-right: 40px;
+}
+
+.mgb0 {
+  margin-bottom: 0 !important;
+}
+
+.mgb5 {
+  margin-bottom: 5px !important;
+}
+
+.mgb10 {
+  margin-bottom: 10px;
+}
+
+.mgb20 {
+  margin-bottom: 20px;
+}
+
+.mgb30 {
+  margin-bottom: 30px;
+}
+
+.mgb40 {
+  margin-bottom: 40px;
+}
+
+.mgl5 {
+  margin-left: 5px !important;
+}
+
+.mgl10 {
+  margin-left: 10px !important;
+}
+
+.mgl15 {
+  margin-left: 15px !important;
+}
+
+.mgl20 {
+  margin-left: 20px;
+}
+
+.mgl30 {
+  margin-left: 30px;
+}
+
+.mgl40 {
+  margin-left: 40px;
+}
+
+.mgl50 {
+  margin-left: 50px;
+}
+
+.mgtb10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mglr10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.mglr5 {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.mgtb20 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mglr20 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.mgtb30 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.mglr30 {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.mgtb40 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.mglr40 {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.pd0 {
+  padding: 0;
+}
+
+.pd10 {
+  padding: 10px;
+}
+
+.pd15 {
+  padding: 15px;
+}
+
+.pd20 {
+  padding: 20px;
+}
+
+.pd30 {
+  padding: 30px;
+}
+
+.pd40 {
+  padding: 40px;
+}
+
+.pdl10 {
+  padding-left: 10px;
+}
+
+.pdr10 {
+  padding-right: 10px;
+}
+
+.pdr0 {
+  padding-right: 0 !important;
+}
+
+.pdt10 {
+  padding-top: 10px;
+}
+
+.pdb10 {
+  padding-bottom: 10px !important;
+}
+
+.pdtb0 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.pdtb10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.pdtb20 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.pdl20 {
+  padding-left: 20px;
+}
+
+.pdr20 {
+  padding-right: 20px;
+}
+
+.pdt0 {
+  padding-top: 0;
+}
+
+.pdt20 {
+  padding-top: 20px;
+}
+
+.pdb20 {
+  padding-bottom: 20px;
+}
+
+.pdtb20 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.pdlr10 {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.pdlr15 {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.pdlr20 {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+.pdlr30 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.pdl30 {
+  padding-left: 30px;
+}
+
+.pdr30 {
+  padding-right: 30px;
+}
+
+.pdt30 {
+  padding-top: 30px;
+}
+
+.pdb30 {
+  padding-bottom: 30px;
+}
+
+.pdtb30 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.pdl40 {
+  padding-left: 40px;
+}
+
+.pdr40 {
+  padding-right: 40px;
+}
+
+.pdt40 {
+  padding-top: 40px;
+}
+
+.pdb40 {
+  padding-bottom: 40px;
+}
+
+.pdtb40 {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.pdlr0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.pdlr40 {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.tl {
+  text-align: left !important;
+}
+
+.tc {
+  text-align: center !important;
+}
+
+.tr {
+  text-align: right;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.show {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.dnone {
+  display: none !important;
+}
+
+.dblock {
+  display: block;
+}
+
+.dinline {
+  display: inline;
+}
+
+.red {
+  color: #f56c6c;
+}
+
+.green {
+  color: #7ac9b2;
+}
+
+.dflex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex {
+  -webkit-box-flex: 1 !important;
+  -ms-flex: 1 !important;
+  -webkit-flex: 1 !important;
+  flex: 1 !important;
+}
+
+.dinlineb {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.w50 {
+  .mixinWidth(50);
+}
+
+.w100 {
+  .mixinWidth(100);
+}
+
+.w120 {
+  .mixinWidth(120);
+}
+
+.w150 {
+  .mixinWidth(150);
+}
+
+.w200 {
+  .mixinWidth(200);
+}
+
+.w250 {
+  .mixinWidth(250);
+}
+
+.w350 {
+  .mixinWidth(350);
+}
+
+.wfull {
+  width: 100%;
+}
+
+.w0 {
+  width: 0 !important;
+}
+
+.h300 {
+  .mixinHeight(300);
+}
+
+.hfull {
+  height: 100% !important;
+}
+
+.full {
+  .wfull();
+  .hfull();
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+/*transition动画函数定义*/
+.transition(@type: all; @time: .2s; @status: linear; @delay: 0s) {
+  -webkit-transition: @type @time @status @delay;
+  -o-transition: @type @time @status @delay;
+  transition: @type @time @status @delay;
+}

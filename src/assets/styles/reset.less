@@ -1,0 +1,77 @@
+// 系统的一些基本样式
+@import "resetElementUI";
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font: 14px/1.4em "微软雅黑", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "sans-serif" !important;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+table {
+  table-layout: fixed;
+}
+
+input,
+button {
+  outline: none;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset;
+  background-color: white !important;
+}
+
+textarea {
+  font-family: "微软雅黑";
+  resize: none;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+/* 滚动条样式重写 ---start--- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(38, 46, 84, 0.8);
+  border-radius: 6px;
+  z-index: 999;
+  &:hover {
+    background-color: @color-black-lighter;
+  }
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: @color-text-regular;
+  border-radius: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(201, 210, 255, 0.8);
+  border-radius: 6px;
+
+  &:hover {
+    background-color: @color-text-regular;
+  }
+}
+
+/* 滚动条样式重写 ---end--- */
