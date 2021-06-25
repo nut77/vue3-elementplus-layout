@@ -1,10 +1,7 @@
-import { createApp } from 'vue';
+import {createApp} from 'vue';
 import ElementPlus from 'element-plus';
 import '@a/styles/index.less';
 import App from './App.vue';
+// import GlobalOperation from './main/globalOperation';
 
-const app = createApp(App);
-app.use(ElementPlus, { size: 'medium' });
-console.log(import.meta.env.MODE);
-console.log(import.meta.env.VITE_AXIOS_BASE_URL);
-app.mount('#app');
+createApp(App).use(ElementPlus, {size: 'medium'}).mount('#app');
