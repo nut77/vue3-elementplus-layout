@@ -1,9 +1,15 @@
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import { injectHtml } from 'vite-plugin-html';
 const path = require('path');
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    injectHtml({
+      injectData: 'xxx系统'
+    })
+  ],
   resolve: {
     extensions: ['.js', '.json', '.vue'],
     alias: {
@@ -22,7 +28,7 @@ export default defineConfig({
       '/api': {
         target: 'http://api.ifbes.com/mock/20/api',
         changeOrigin: true,
-        rewrite: (path) => path.replace('^/api', '')
+        rewrite: path => path.replace('^/api', '')
       }
     }
   },
