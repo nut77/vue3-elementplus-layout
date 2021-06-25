@@ -4,20 +4,20 @@
 @background-color-darker: #0b0b0c;
 @background-color-light: #121220;
 @background-color-expand: #040921;
-@background-color-base-opacity: rgba(16, 16, 29, .8);
+@background-color-base-opacity: rgba(16, 16, 29, 0.8);
 
-@color-black: #1A1A2E;
+@color-black: #1a1a2e;
 @color-black-lighter: #262e54;
 
 @color-text-primary: #fbfbfb;
 @color-text-regular: #c9d2ff;
-@color-text-placeholder: #7E84A3;
+@color-text-placeholder: #7e84a3;
 
 @color-primary: #41b2ff;
-@color-success: #06AE1C;
-@color-warning: #FF8800;
-@color-danger: #EC2F4F;
-@color-info: #7E84A3;
+@color-success: #06ae1c;
+@color-warning: #ff8800;
+@color-danger: #ec2f4f;
+@color-info: #7e84a3;
 
 .mixinTextColor(@color) {
   color: @color !important;
@@ -26,41 +26,41 @@
 .mixinStatusBox(@bgColor) {
   display: inline-block;
   background-color: @bgColor !important;
-  color:white !important;
+  color: white !important;
 }
 
-[data-status-text="info"] {
+[data-status-text='info'] {
   .mixinTextColor(@color-info);
 }
-[data-status-text="primary"] {
+[data-status-text='primary'] {
   .mixinTextColor(@color-primary);
 }
-[data-status-text="warning"] {
+[data-status-text='warning'] {
   .mixinTextColor(@color-warning);
 }
-[data-status-text="danger"] {
+[data-status-text='danger'] {
   .mixinTextColor(@color-danger);
 }
-[data-status-text="success"] {
+[data-status-text='success'] {
   .mixinTextColor(@color-success);
 }
 
-[data-status-box="准备开始"] {
+[data-status-box='准备开始'] {
   .mixinStatusBox(@color-info);
 }
-[data-status-box="已创建"] {
+[data-status-box='已创建'] {
   .mixinStatusBox(@color-primary);
 }
-[data-status-box="分析中"] {
+[data-status-box='分析中'] {
   .mixinStatusBox(@color-warning);
 }
-[data-status-box="分析中止"] {
+[data-status-box='分析中止'] {
   .mixinStatusBox(@color-danger);
 }
-[data-status-box="分析异常"] {
+[data-status-box='分析异常'] {
   .mixinStatusBox(@color-danger);
 }
-[data-status-box="分析完成"] {
+[data-status-box='分析完成'] {
   .mixinStatusBox(@color-success);
 }
 
@@ -114,7 +114,7 @@
 .clearfix:before,
 .clearfix:after {
   display: table;
-  content: " ";
+  content: ' ';
 }
 
 .clearfix:after {
@@ -599,7 +599,7 @@
 }
 
 /*transition动画函数定义*/
-.transition(@type: all; @time: .2s; @status: linear; @delay: 0s) {
+.transition(@type: all; @time: 0.2s; @status: linear; @delay: 0s) {
   -webkit-transition: @type @time @status @delay;
   -o-transition: @type @time @status @delay;
   transition: @type @time @status @delay;
