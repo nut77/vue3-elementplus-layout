@@ -15,6 +15,7 @@ module.exports = {
   requirePragma: false,
   proseWrap: 'never',
   // 行尾换行格式
-  htmlWhitespaceSensitivity: 'strict',
-  endOfLine: 'lf'
+  htmlWhitespaceSensitivity: 'css',
+  endOfLine: 'lf',
+  embeddedLanguageFormatting: 'off'
 };
