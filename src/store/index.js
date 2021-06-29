@@ -18,7 +18,7 @@ const state = {
   userInfo: {...userInfoInit},
   timeToGetToken: 0,
   systemInfo: {
-    name: import.meta.env.VITE__SYSTEM_NAME,
+    name: import.meta.env.VITE_SYSTEM_NAME,
     version: import.meta.env.VITE_SYSTEM_VERSION
   }
 };
