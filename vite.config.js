@@ -1,13 +1,14 @@
-import { defineConfig } from 'vite';
+import {defineConfig, loadEnv} from 'vite';
 import vue from '@vitejs/plugin-vue';
-import { injectHtml } from 'vite-plugin-html';
+import {injectHtml} from 'vite-plugin-html';
 const path = require('path');
 
+const env = loadEnv('', process.cwd());
 export default defineConfig({
   plugins: [
     vue(),
     injectHtml({
-      injectData: 'xxx系统'
+      injectData: {...env}
     })
   ],
   resolve: {
