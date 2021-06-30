@@ -29,7 +29,7 @@ export default defineConfig({
       '/api': {
         target: 'http://api.ifbes.com/mock/20/api',
         changeOrigin: true,
-        rewrite: path => path.replace('^/api', '')
+        rewrite: path => path.replace(/^\/api/, '')
       }
     }
   },
