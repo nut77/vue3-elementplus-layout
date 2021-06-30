@@ -127,27 +127,28 @@
     focusType = type;
   };
   // 登录操作
-  const {ctx} = getCurrentInstance();
+  let {proxy} = getCurrentInstance();
   const submitForm = () => {
     loginForm.value.validate(async valid => {
       if (!valid) return;
       loading = true;
-      const res = await ctx.$api.login.login({
+      const res = await proxy.$api.login.login({
         username: loginData.username,
         password: SHA256.hmac(loginData.username, loginData.password)
       });
       loading = false;
-      if (!!res && res.status === 200) {
+      if (res.status === 200) {
         localStorage.setItem('token', res.data.token);
         store.commit('setUserInfo', res.data);
         store.commit('setTimeToGetToken', res.data);
-        // router.push('/home');
+        router.push('/home');
       } else {
         msg = res.message;
       }
     });
   };
 
+  // 钩子函数
   onBeforeMount(() => {
     store.commit('resetUserInfo');
     store.commit('setTimeToGetToken', 0);
