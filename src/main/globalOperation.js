@@ -1,23 +1,23 @@
 // 需要全局引用的组件、指令、工具方法等
-import Api from '@/api';
 
 /**
  * 拿到指定路径下面的模块，减少index.js文件 路径不能用变量
  * @param {string} name
- * @return {Promise}
+ * @return {}
  */
-async function getModules(name) {
-  let modulesFiles = import.meta.glob('/src/test/*.js');
-  if (name === 'directives') modulesFiles = import.meta.glob('/src/directives/*.js');
-  if (name === 'utils') modulesFiles = import.meta.glob('/src/utils/*.js');
-  if (name === 'components') modulesFiles = import.meta.glob('/src/components/*.vue');
+function getModules(name) {
+  let modulesFiles = import.meta.globEager('/src/test/*.js');
+  if (name === 'directives') modulesFiles = import.meta.globEager('/src/directives/*.js');
+  if (name === 'utils') modulesFiles = import.meta.globEager('/src/utils/*.js');
+  if (name === 'api') modulesFiles = import.meta.globEager('/src/api/*.js');
+  // if (name === 'components') modulesFiles = import.meta.globEager('/src/components/*.vue');
 
-  const modules = {};
-  for (const path in modulesFiles) {
+  return Object.keys(modulesFiles).reduce((modules, path) => {
     const key = path.replace(/.+\/(\w+)\.(js|vue)$/g, '$1');
-    modules[key] = await modulesFiles[path]().then(mod => mod.default || mod || {});
-  }
-  return modules;
+    const mod = modulesFiles[path];
+    modules[key] = mod.default || mod || {};
+    return modules;
+  }, {});
 }
 
 export default {
