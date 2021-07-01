@@ -1,6 +1,6 @@
 module.exports = {
   eslintIntegration: true,
-  printWidth: 100,
+  printWidth: 150,
   tabWidth: 2,
   useTabs: false,
   semi: true,

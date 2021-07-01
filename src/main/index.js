@@ -1,7 +1,7 @@
 import {createApp} from 'vue';
 import ElementPlus from 'element-plus';
 import store from '@/store';
-import router from '@/store';
+import router from '@/router';
 import '@a/styles/index.less';
 import App from '@p/login/Index.vue';
 // import GlobalOperation from './main/globalOperation';

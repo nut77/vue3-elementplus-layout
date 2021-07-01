@@ -1,23 +1,22 @@
-import Vue from 'vue';
 import {createRouter, createWebHistory} from 'vue-router';
 import routes from './routes';
 import store from '@/store';
 
 const router = createRouter({
-  mode: createWebHistory(),
+  history: createWebHistory(),
   routes
 });
 
 router.beforeEach((to, from, next) => {
   // 验证是否登录
-  const token = store.state.userInfo.token;
+  const token = store.getters.token;
   if (to.path !== '/login' && (token === 'null' || !token)) {
     next('/login');
     return false;
   }
 
   // token存在 访问不存在的页面、登录页、不属于自己权限内的页面 默认跳转首页 普通用户：任务中心 管理员：系统管理-用户管理
-  const role = store.state.userInfo.role || '普通用户';
+  const role = store.getters.role;
   const pageHomePath = role === '管理员' ? '/system-manage/user' : '/home';
   if (
     token !== 'null' &&

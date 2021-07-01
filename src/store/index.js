@@ -26,7 +26,8 @@ const state = {
 const getters = {
   username: state => state.userInfo.username,
   isAdmin: state => state.userInfo.role === '管理员',
-  role: state => state.userInfo.role || '管理员'
+  role: state => state.userInfo.role || '普通用户',
+  token: state => state.userInfo.token
 };
 
 const mutations = {

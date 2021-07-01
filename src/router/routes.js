@@ -18,6 +18,7 @@ import MENU_LIST from './config';
  * meta-authority [string]-该页面所属用户权限（'管理员'、'普通用户'）
  */
 const COMPONENT_EMPTY_PATH = 'WrapperEmpty.vue';
+const components = getAllComponent();
 
 /**
  * 生成上述路由配置
@@ -33,16 +34,19 @@ function getMenuItemConfig(index, name, path, componentPath, config = {}, childr
     name,
     path,
     component: loadComponent(componentPath || COMPONENT_EMPTY_PATH),
-    meta: Object.assign({
-      index,
-      fullPath: '',
-      hasWrapperTop: true,
-      hasWrapperLeft: true,
-      hasWrapperSubNav: true,
-      isNav: true,
-      iconClass: '',
-      authority: ['管理员', '普通用户']
-    }, config)
+    meta: Object.assign(
+      {
+        index,
+        fullPath: '',
+        hasWrapperTop: true,
+        hasWrapperLeft: true,
+        hasWrapperSubNav: true,
+        isNav: true,
+        iconClass: '',
+        authority: ['管理员', '普通用户']
+      },
+      config
+    )
   };
   !config.fullPath && (menuItemConfig.meta.fullPath = path);
   if (config.redirect) menuItemConfig.redirect = config.redirect;
@@ -69,15 +73,18 @@ function getRoutes() {
 }
 
 /**
- * 处理异步加载页面组件，传递组件文件路径（必须是相对路径）。组件路径如果是字面量直接引用就行，参数的话就需要用这个方法。
- * require引用文件（模块），必须是字符串（可以是字符串+变量（路径必须是相对路径）），直接引用字符串变量会报错
- * 方法体中两种引用组件的写法都可以，核心就是require引入，import引入必须是字面量
+ * 懒加载所有路由相关的组件
+ * import只支持字符串字面量，import.meta.glob也只能使用对象字面量
  */
-function loadComponent(componentPath) {
-  if (componentPath === COMPONENT_EMPTY_PATH) {
-    return () => Promise.resolve(require(`@l/${componentPath}`).default);
-  }
-  return resolve => require([`@p/${componentPath}`], resolve);
+function getAllComponent(componentPath) {
+  const pages = import.meta.glob('/src/pages/**/**.vue');
+  const empty = import.meta.glob(`/src/layout/WrapperEmpty.vue`);
+  return {...pages, ...empty};
 }
 
+// 根据路由组件名拿到异步组件
+function loadComponent(componentPath) {
+  const key = (componentPath === COMPONENT_EMPTY_PATH ? '/src/layout/' : '/src/pages/') + componentPath;
+  return components[key];
+}
 export default getRoutes();
