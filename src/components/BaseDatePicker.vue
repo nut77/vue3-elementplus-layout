@@ -74,7 +74,8 @@ export default {
     // 可选的最大日期
     maxDate: {
       type: String,
-      default: new Date().format('yyyy-MM-dd')
+      //default: new Date().format('yyyy-MM-dd')
+      default: new Date()
     }
   },
   data() {

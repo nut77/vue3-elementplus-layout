@@ -3,14 +3,14 @@
 /**
  * 拿到指定路径下面的模块，减少index.js文件 路径不能用变量
  * @param {string} name
- * @return {}
+ * @return {Object}
  */
 function getModules(name) {
   let modulesFiles = import.meta.globEager('/src/test/*.js');
   if (name === 'directives') modulesFiles = import.meta.globEager('/src/directives/*.js');
   if (name === 'utils') modulesFiles = import.meta.globEager('/src/utils/*.js');
   if (name === 'api') modulesFiles = import.meta.globEager('/src/api/*.js');
-  // if (name === 'components') modulesFiles = import.meta.globEager('/src/components/*.vue');
+  if (name === 'components') modulesFiles = import.meta.globEager('/src/components/*.vue');
 
   return Object.keys(modulesFiles).reduce((modules, path) => {
     const key = path.replace(/.+\/(\w+)\.(js|vue)$/g, '$1');
@@ -22,7 +22,7 @@ function getModules(name) {
 
 export default {
   install(app) {
-    this.registerDirectives(app);
+    //this.registerDirectives(app);
     this.registerGlobalProperties(app);
     this.registerComponents(app);
   },
@@ -35,7 +35,7 @@ export default {
   },
   // 将方法挂载在原型上
   registerGlobalProperties(app) {
-    const GlobalProperties = {api: Api, ...getModules('utils')};
+    const GlobalProperties = {api: getModules('api'), ...getModules('utils')};
     for (const name in GlobalProperties) {
       app.config.globalProperties['$' + name] = GlobalProperties[name];
     }

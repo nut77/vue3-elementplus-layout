@@ -39,15 +39,9 @@
           </el-button>
         </el-form-item>
         <div class="login-tip">
-          <p v-if="!isDeviceMatch.resolution">
-            当前分辨率过低会影响体验，推荐使用分辨率1366*768及以上终端。
-          </p>
-          <p v-if="isDeviceMatch.resolution && !isDeviceMatch.viewport">
-            浏览器可视区域过小会影响体验，建议将浏览器最大化。
-          </p>
-          <p v-if="!isDeviceMatch.browserVersion">
-            当前浏览器版本过低会影响体验，请升级到最新版本。
-          </p>
+          <p v-if="!isDeviceMatch.resolution">当前分辨率过低会影响体验，推荐使用分辨率1366*768及以上终端。</p>
+          <p v-if="isDeviceMatch.resolution && !isDeviceMatch.viewport">浏览器可视区域过小会影响体验，建议将浏览器最大化。</p>
+          <p v-if="!isDeviceMatch.browserVersion">当前浏览器版本过低会影响体验，请升级到最新版本。</p>
           <p v-if="!isDeviceMatch.browser">推荐使用火狐或谷歌浏览器最新版，效果更佳。</p>
         </div>
       </el-form>
@@ -58,13 +52,13 @@
 
 <script setup>
   import SHA256 from 'js-sha256';
-  import imgSrc from '@a/images/login/logo.png';
+  import logoSrc from '@a/images/login/logo.png';
   import {getCurrentInstance, ref, reactive, onBeforeMount, onUnmounted} from 'vue';
   import {useStore} from 'vuex';
   import {useRouter} from 'vue-router';
 
   const [store, router] = [useStore(), useRouter()];
-  const [logoSrc, loginForm] = [imgSrc, ref(null)];
+  const [loginForm] = [ref(null)];
   let [loading, focusType, msg] = [ref(false), ref(''), ref('')];
   const loginData = reactive({
     username: '',
