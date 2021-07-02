@@ -30,51 +30,51 @@
         <el-dropdown-item command="logout">退出登录</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
-
-    <!--修改密码弹框-->
-    <base-dialog
-      ref="dialog"
-      title="修改密码"
-      :dialogId="dialogId"
-      @dialogConfirm="handleChangePassword"
-      @dialogClose="hideDialog"
-    >
-      <div class="base-dialog-container">
-        <el-form :model="formData" :rules="formRules" ref="form" label-width="80px">
-          <el-form-item label="原始密码" prop="password">
-            <el-input
-              maxlength="20"
-              type="password"
-              placeholder="请输入原始密码"
-              v-model.trim="formData.password"
-              clearable
-              onpaste="return false"
-            />
-          </el-form-item>
-          <el-form-item label="新密码" prop="modifyPassword">
-            <el-input
-              maxlength="20"
-              type="password"
-              placeholder="请输入新密码"
-              v-model.trim="formData.modifyPassword"
-              clearable
-              onpaste="return false"
-            />
-          </el-form-item>
-          <el-form-item label="确认密码" prop="modifyPasswordRepeat">
-            <el-input
-              maxlength="20"
-              type="password"
-              placeholder="请再次输入新密码"
-              v-model.trim="formData.modifyPasswordRepeat"
-              clearable
-              onpaste="return false"
-            />
-          </el-form-item>
-        </el-form>
-      </div>
-    </base-dialog>
   </el-header>
+
+  <!--修改密码弹框-->
+  <base-dialog
+    ref="dialog"
+    title="修改密码"
+    :dialogId="dialogId"
+    @dialogConfirm="handleChangePassword"
+    @dialogClose="hideDialog"
+  >
+    <div class="base-dialog-container">
+      <el-form :model="formData" :rules="formRules" ref="form" label-width="80px">
+        <el-form-item label="原始密码" prop="password">
+          <el-input
+            maxlength="20"
+            type="password"
+            placeholder="请输入原始密码"
+            v-model.trim="formData.password"
+            clearable
+            onpaste="return false"
+          />
+        </el-form-item>
+        <el-form-item label="新密码" prop="modifyPassword">
+          <el-input
+            maxlength="20"
+            type="password"
+            placeholder="请输入新密码"
+            v-model.trim="formData.modifyPassword"
+            clearable
+            onpaste="return false"
+          />
+        </el-form-item>
+        <el-form-item label="确认密码" prop="modifyPasswordRepeat">
+          <el-input
+            maxlength="20"
+            type="password"
+            placeholder="请再次输入新密码"
+            v-model.trim="formData.modifyPasswordRepeat"
+            clearable
+            onpaste="return false"
+          />
+        </el-form-item>
+      </el-form>
+    </div>
+  </base-dialog>
 </template>
 
 <script>

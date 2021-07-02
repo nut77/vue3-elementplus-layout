@@ -128,7 +128,6 @@
 </script>
 
 <style lang="less" scoped>
-  body,
   .app-container {
     width: 100%;
     height: 100%;

@@ -60,6 +60,17 @@
 }
 
 // Dialog
+.el-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  height: 100%;
+  background-color: rgba(11, 11, 12, 0.6) !important;
+  overflow: auto;
+}
 .el-dialog__title {
   .dinlineb;
   width: calc(~"100% - 30px");
@@ -90,10 +101,6 @@
   .el-button + .el-button {
     margin-left: 20px !important;
   }
-}
-.v-modal {
-  opacity: .6 !important;
-  background-color: @background-color-darker !important;
 }
 
 // Table
@@ -226,7 +233,7 @@ tr .el-table__expanded-cell {
   }
 }
 
-// DatePicker 
+// DatePicker
 .el-date-picker__time-header,
 .el-picker-panel__footer,
 .el-time-panel__footer {
