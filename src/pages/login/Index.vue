@@ -65,7 +65,7 @@
     password: ''
   });
   const loginDataRule = reactive({
-    username: [{required: true, message: ' * 请输入用户名123'}],
+    username: [{required: true, message: ' * 请输入用户名'}],
     password: [{required: true, message: ' * 请输入密码'}]
   });
   const isDeviceMatch = reactive({
@@ -184,7 +184,7 @@
       display: none !important;
     }
   }
-  /deep/ .el-input {
+  :deep(.el-input) {
     &::before {
       position: absolute;
       top: 50%;

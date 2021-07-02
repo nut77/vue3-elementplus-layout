@@ -169,8 +169,8 @@
   .el-menu--horizontal .el-menu-item-box {
     display: flex;
   }
-  /deep/ .el-menu-item,
-  /deep/ .el-submenu__title {
+  :deep(.el-menu-item),
+  :deep(.el-submenu__title) {
     width: 130px;
     height: 60px;
     background-color: @background-color-darker !important;
@@ -182,11 +182,11 @@
       background-color: rgba(65, 178, 255, 0.8) !important;
     }
   }
-  /deep/ .el-submenu.is-opened .el-submenu__title {
+  :deep(.el-submenu.is-opened .el-submenu__title) {
     background-color: rgba(65, 178, 255, 0.8) !important;
   }
-  /deep/ .el-menu-item.is-active,
-  /deep/ .el-submenu.is-active .el-submenu__title {
+  :deep(.el-menu-item.is-active),
+  :deep(.el-submenu.is-active .el-submenu__title) {
     background-color: @color-primary !important;
     color: @color-text-primary !important;
   }
