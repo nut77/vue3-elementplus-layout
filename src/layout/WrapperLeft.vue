@@ -16,19 +16,22 @@
 
 <script>
   import WrapperMenuItem from './WrapperMenuItem';
+  import {ref, watch, toRef} from 'vue';
   export default {
     name: 'WrapperLeft',
     props: ['navList', 'path', 'isCollapse'],
     components: {WrapperMenuItem},
-    data() {
-      return {
-        activePath: this.path[this.path.length - 1]
+    setup(props) {
+      // 也可以这样写 const {path} = toRefs(props);
+      const path = toRef(props, 'path');
+      const activePath = ref('');
+      const setActivePath = () => {
+        activePath.value = path.value[path.value.length - 1];
+        console.log(activePath.value);
       };
-    },
-    watch: {
-      path() {
-        this.activePath = this.path[this.path.length - 1];
-      }
+      setActivePath();
+      watch(path, setActivePath);
+      return {activePath};
     }
   };
 </script>

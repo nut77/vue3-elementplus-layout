@@ -1,12 +1,17 @@
 <template>
   <el-container class="app-container">
-    <wrapper-top v-if="hasWrapperTop" :navList="menuTop" :path="path" @setEnableSetMenuLeft="setEnableSetMenuLeft" @toggleCollapse="toggleCollapse">
-    </wrapper-top>
+    <wrapper-top
+      v-if="hasWrapperTop"
+      :navList="menuTop"
+      :path="path"
+      @setEnableSetMenuLeft="setEnableSetMenuLeft"
+      @toggleCollapse="toggleCollapse"
+    />
     <el-container v-if="(hasWrapperLeft && !isOnlyNavTop) || (isOnlyNavLeft && $route.meta.isNav)">
-      <wrapper-left :key="menuLeftKey" :navList="menuLeft" :path="path" :isCollapse="isCollapse"> </wrapper-left>
-      <wrapper-content :class="wrapperContentClass"></wrapper-content>
+      <wrapper-left :key="menuLeftKey" :navList="menuLeft" :path="path" :isCollapse="isCollapse" />
+      <wrapper-content :class="wrapperContentClass" />
     </el-container>
-    <wrapper-content v-else :class="wrapperContentClass"></wrapper-content>
+    <wrapper-content v-else :class="wrapperContentClass" />
   </el-container>
 </template>
 
@@ -72,13 +77,18 @@
         if (!this.routes || !route.matched.length) return;
         const parentPath = route.matched[0].path;
         const parentRouteConfig = this.routes.find(item => item.path === parentPath);
-        this.menuLeft = parentRouteConfig && parentRouteConfig.children ? parentRouteConfig.children.filter(item => item.meta.isNav) : [];
+        this.menuLeft =
+          parentRouteConfig && parentRouteConfig.children
+            ? parentRouteConfig.children.filter(item => item.meta.isNav)
+            : [];
         // 顶部 + 左侧 这种导航结构，当点击顶部菜单时，才去更新左侧导航菜单，要给左侧导航菜单设置key不然多级导航展开的不会收缩
         this.menuLeftKey = Date.now();
         this.setEnableSetMenuLeft(false);
       },
       setPath(route) {
-        this.path = route.matched.length ? route.matched.map(item => item.path) : [route.path || '/home'];
+        this.path = route.matched.length
+          ? route.matched.map(item => item.path)
+          : [route.path || '/home'];
       },
       initLayout(route) {
         route = route || this.$route;
@@ -98,17 +108,21 @@
       $route(toRoute) {
         this.initLayout(toRoute);
         // 若当前页面被内嵌则修改浏览器访问地址为实际访问地址
-        (window.self !== window.top) && (top.location.href = window.location.href);
+        window.self !== window.top && (top.location.href = window.location.href);
       }
     },
     created() {
       this.routes = this.$router.options.routes;
       this.initLayout();
       this.updateOperationTime();
-      this.operationTime.action.map(type => document.addEventListener(type, this.updateOperationTime));
+      this.operationTime.action.map(type =>
+        document.addEventListener(type, this.updateOperationTime)
+      );
     },
     destroyed() {
-      this.operationTime.action.map(type => document.removeEventListener(type, this.updateOperationTime));
+      this.operationTime.action.map(type =>
+        document.removeEventListener(type, this.updateOperationTime)
+      );
     }
   };
 </script>

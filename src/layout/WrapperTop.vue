@@ -15,10 +15,15 @@
     >
       <wrapper-menu-item :navList="navList" :isRecursive="isOnlyNavTop"></wrapper-menu-item>
     </el-menu>
-    <el-dropdown @command="handleCommand" trigger="click" placement="bottom-start" class="el-header-user">
+    <el-dropdown
+      @command="handleCommand"
+      trigger="click"
+      placement="bottom-start"
+      class="el-header-user"
+    >
       <div class="el-dropdown-link">
         <img class="mgr5" :src="userSrc" height="24" width="24" />
-        {{username}}
+        {{ username }}
       </div>
       <el-dropdown-menu class="el-header-dropdown-menu" #default>
         <el-dropdown-item command="changePassword">修改密码</el-dropdown-item>
@@ -27,11 +32,24 @@
     </el-dropdown>
 
     <!--修改密码弹框-->
-    <base-dialog ref="dialog" title="修改密码" :dialogId="dialogId" @dialogConfirm="handleChangePassword" @dialogClose="hideDialog">
+    <base-dialog
+      ref="dialog"
+      title="修改密码"
+      :dialogId="dialogId"
+      @dialogConfirm="handleChangePassword"
+      @dialogClose="hideDialog"
+    >
       <div class="base-dialog-container">
         <el-form :model="formData" :rules="formRules" ref="form" label-width="80px">
           <el-form-item label="原始密码" prop="password">
-            <el-input maxlength="20" type="password" placeholder="请输入原始密码" v-model.trim="formData.password" clearable onpaste="return false" />
+            <el-input
+              maxlength="20"
+              type="password"
+              placeholder="请输入原始密码"
+              v-model.trim="formData.password"
+              clearable
+              onpaste="return false"
+            />
           </el-form-item>
           <el-form-item label="新密码" prop="modifyPassword">
             <el-input
@@ -111,7 +129,7 @@
       },
       handleCommand(command) {
         if (command === 'logout') this.handleLogout();
-        if (command === 'changePassword') (this.dialogId = Date.now());
+        if (command === 'changePassword') this.dialogId = Date.now();
       },
       // 退出登录
       async handleLogout() {
@@ -195,7 +213,7 @@
     width: 20px;
     height: 20px;
     margin-right: 15px;
-    background: url("../assets/images/layout/top-nav-icon.png") no-repeat;
+    background: url('../assets/images/layout/top-nav-icon.png') no-repeat;
   }
   .el-dropdown-link {
     display: flex;

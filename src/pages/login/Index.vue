@@ -15,7 +15,7 @@
             clearable
             @focus="focusInput('username')"
             class="el-input--username"
-            :class="{'active': focusType === 'username'}"
+            :class="{active: focusType === 'username'}"
           />
         </el-form-item>
         <el-form-item prop="password">
@@ -28,25 +28,33 @@
             clearable
             @focus="focusInput('password')"
             class="el-input--password"
-            :class="{'active': focusType === 'password'}"
+            :class="{active: focusType === 'password'}"
             onpaste="return false"
           />
         </el-form-item>
         <el-form-item class="mgt50">
-          <p class="login-msg">{{msg}}</p>
+          <p class="login-msg">{{ msg }}</p>
           <el-button @click="submitForm" plain :loading="loading" type="primary">
-            {{`${loading ? '登录中' : '登 录'}`}}
+            {{ `${loading ? '登录中' : '登 录'}` }}
           </el-button>
         </el-form-item>
         <div class="login-tip">
-          <p v-if="!isDeviceMatch.resolution">当前分辨率过低会影响体验，推荐使用分辨率1366*768及以上终端。</p>
-          <p v-if="isDeviceMatch.resolution && !isDeviceMatch.viewport">浏览器可视区域过小会影响体验，建议将浏览器最大化。</p>
-          <p v-if="!isDeviceMatch.browserVersion">当前浏览器版本过低会影响体验，请升级到最新版本。</p>
+          <p v-if="!isDeviceMatch.resolution">
+            当前分辨率过低会影响体验，推荐使用分辨率1366*768及以上终端。
+          </p>
+          <p v-if="isDeviceMatch.resolution && !isDeviceMatch.viewport">
+            浏览器可视区域过小会影响体验，建议将浏览器最大化。
+          </p>
+          <p v-if="!isDeviceMatch.browserVersion">
+            当前浏览器版本过低会影响体验，请升级到最新版本。
+          </p>
           <p v-if="!isDeviceMatch.browser">推荐使用火狐或谷歌浏览器最新版，效果更佳。</p>
         </div>
       </el-form>
     </div>
-    <p class="login-footer">{{$store.state.systemInfo.name}} {{$store.state.systemInfo.version}}</p>
+    <p class="login-footer">
+      {{ $store.state.systemInfo.name }} {{ $store.state.systemInfo.version }}
+    </p>
   </div>
 </template>
 
@@ -151,9 +159,7 @@
     checkResolution();
     window.addEventListener('resize', checkViewport);
   });
-  onUnmounted(() => {
-    window.removeEventListener('resize', checkViewport);
-  });
+  onUnmounted(() => window.removeEventListener('resize', checkViewport));
 </script>
 
 <style lang="less" scoped>
@@ -173,7 +179,7 @@
   .el-form {
     width: 480px;
     height: 318px;
-    padding:  30px 75px;
+    padding: 30px 75px;
     margin: 30px auto;
     background: linear-gradient(to bottom, rgba(26, 26, 46, 1), rgba(26, 26, 46, 0));
     border-radius: 10px;
@@ -192,7 +198,7 @@
       width: 30px;
       height: 30px;
       content: '';
-      background-image: url("../../assets/images/login/icon.png");
+      background-image: url('../../assets/images/login/icon.png');
       transform: translateY(-50%);
     }
     &.el-input--password::before {

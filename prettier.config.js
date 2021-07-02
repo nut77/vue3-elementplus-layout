@@ -1,6 +1,6 @@
 module.exports = {
   eslintIntegration: true,
-  printWidth: 150,
+  printWidth: 100,
   tabWidth: 2,
   useTabs: false,
   semi: true,
@@ -16,6 +16,6 @@ module.exports = {
   proseWrap: 'never',
   // 行尾换行格式
   htmlWhitespaceSensitivity: 'css',
-  endOfLine: 'lf',
-  embeddedLanguageFormatting: 'off'
+  endOfLine: 'lf'
+  // embeddedLanguageFormatting: 'off'
 };
